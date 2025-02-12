@@ -1,80 +1,883 @@
 <!DOCTYPE html>
+
 <html>
+
 <head>
-<title>Page Title</title>
-<link href="css/reset.css" rel="stylesheet">
-<link href="css/style.css" rel="stylesheet">
+
+    <title></title>
+
+    <style>
+        /*reset*/
+        * {
+            margin: 0;
+        }
+
+        ul,
+        li,
+        ol {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        #wrap {
+            width: 100%;
+            height: 600px;
+            position: relative;
+        }
+
+
+        /*헤더*/
+        header {
+            width: 100%;
+            height: 150px;
+            margin: 0 auto;
+        }
+
+        #top {
+            width: 100%;
+            height: 30px;
+            margin: 0;
+            background-color: blueviolet;
+            text-align: center;
+            float: left;
+        }
+
+        #logo_box {
+            width: 1300px;
+            height: 140px;
+            margin: 0 auto;
+        }
+
+        #logo {
+            width: 155px;
+            height: 60px;
+            float: left;
+            margin: 0 auto;
+        }
+
+        #logo>a>img {
+            width: 100%;
+            height: 100%;
+            margin: 10px;
+        }
+
+        #login {
+            width: 1250px;
+            height: 30px;
+            margin: 0 auto;
+        }
+
+        #login ul {
+            width: 700px;
+            margin: 0;
+            font-size: 14px;
+            color: white;
+            float: right;
+        }
+
+        #login li {
+            float: left;
+            margin: 5px 0 5px 13px;
+        }
+
+        #login li a {
+            text-decoration: none;
+            color: white;
+        }
+
+
+        /*menu*/
+
+        .menu {
+            width: 1000px;
+            height: 40px;
+            float: left;
+            margin: 25px 0 0 80px;
+            text-align: center;
+        }
+
+        .menu>li {
+            float: left;
+            width: 15%;
+            text-align: center;
+            background-color: red;
+            line-height: 40px;
+        }
+
+        .menu>li>a {
+            background-color: #eee;
+            text-transform: uppercase;
+            display: block;
+            text-decoration: none;
+            color: #000;
+            font-size: 19px;
+            font-weight: bold;
+        }
+
+        .menu>li>a:hover {
+            color: green;
+        }
+
+        .menu>ul>li {
+            float: left;
+            margin: 0px 50px;
+        }
+
+
+        .sub {
+            width: 100%;
+            height: 250px;
+            background-color: #fff;
+            display: none;
+            color: #333;
+            border-left: 1px solid #eee;
+            border-right: 1px solid #eee;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            z-index: 3;
+            position: relative;
+        }
+
+        .sub>li>a {
+            display: block;
+            font-size: 19px;
+            font-weight: bold;
+        }
+
+        .sub>li>a:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        /*sub_menu*/
+
+        h3 {
+            font-size: 20px;
+            text-align: center;
+            line-height: 30px;
+            letter-spacing: 3px;
+        }
+
+
+
+        #sub_menu {
+            width: 50%;
+            height: 150px;
+            text-align: center;
+            margin: 0 auto;
+            line-height: auto;
+        }
+
+        #sub_menu>ul>li>a>img {
+            width: 28px;
+            height: 28px;
+            margin: 0 0 0 0px;
+            vertical-align: middle;
+        }
+
+        #sub_menu>ul>li>a:hover {
+            transform: scale(1.2);
+            overflow: hidden;
+            background-color: #b4f0ff;
+            color: #000;
+        }
+
+        #sub_menu>ul>li>a {
+            float: left;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #000;
+            line-height: 30px;
+            width: 150px;
+            height: 40px;
+            border-radius: 20px;
+            margin: 10px;
+            border: 1px solid skyblue;
+        }
+
+
+        /*slider*/
+
+        #slidewrap {
+            width: 100%;
+            height: 500px;
+            margin: 0 auto;
+            position: relative;
+            text-align: center;
+        }
+
+
+        .slide {
+            width: 100%;
+        }
+
+        .slide>li {
+            width: 100%;
+            height: 500px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .slide>li>img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide li:not(:first-child) {
+            display: none;
+        }
+
+
+        span:hover {
+            background: rgba(255, 255, 255, 0.8);
+            color: #000;
+        }
+
+
+
+        .prev {
+            position: absolute;
+            top: 50%;
+            display: block;
+            font-size: 38px;
+            color: #fff;
+            line-height: 40px;
+
+            background: rgba(0, 0, 0, 0.6);
+            cursor: pointer;
+            height: 50px;
+            transform: translateY(-50%);
+            left: 0;
+            border-radius: 0 10px 10px 0px;
+            padding: 10px;
+        }
+
+        .next {
+            position: absolute;
+            top: 50%;
+            display: block;
+            font-size: 38px;
+            color: #fff;
+            line-height: 40px;
+
+            background: rgba(0, 0, 0, 0.6);
+            cursor: pointer;
+            height: 50px;
+            transform: translateY(-50%);
+            right: 0;
+            border-radius: 10px 0px 0px 10px;
+            padding: 10px;
+        }
+
+        /*메인 메뉴?*/
+        body {
+            font-Family: Charcoal, sans-serif;
+            background-color: #eee;
+        }
+
+        .box>div {
+            width: 270px;
+            height: 279px;
+            overflow: hidden;
+        }
+
+        .box>div>a>img {
+            width: 270px;
+            height: 270px;
+        }
+
+        .box>div>a>img:hover {
+            opacity: 0.5;
+        }
+
+        .box>h5>a {
+            font-size: 12px;
+            height: 20px;
+            margin: 0px;
+            margin-right: 15px;
+            margin-left: 15px;
+            color: #000;
+            text-align: left;
+            text-decoration: none;
+            display: block;
+        }
+
+
+        .box>p>a {
+            border-bottom: 1px solid #eee;
+            margin-right: 15px;
+            margin-left: 15px;
+            font-size: 12px;
+            color: #666;
+            line-height: 45px;
+            text-align: left;
+            text-decoration: none;
+            display: block;
+        }
+
+        .box>span {
+            font-size: 11px;
+            margin-left: 15px;
+            margin-right: 15px;
+            float: left;
+        }
+
+        .box>button {
+            font-size: 11px;
+            border-radius: 3px;
+            border: none;
+            background: #ba7112;
+            padding: 5px;
+            color: #fff;
+            margin-right: 15px;
+            float: right;
+            cursor: pointer;
+        }
+
+
+
+
+        #title {
+            color: green;
+            text-align: center;
+            font-family: Impact;
+            font-size: 35px;
+        }
+
+
+        p {
+            color: #666;
+            font-size: 13px;
+            margin: 0;
+        }
+
+        article {
+            width: 1200px;
+            height: 900px;
+            text-align: center;
+            border: 1px solid #999;
+            margin: 0 auto;
+        }
+
+        .box {
+            width: 270px;
+            height: 380px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            margin: 20px 10px;
+            display: inline-block;
+            box-shadow: 4px 4px 4px #ddd;
+        }
+
+        /*풋터*/
+        footer {
+            width: 100%;
+            height: 150px;
+            margin: 0 auto;
+        }
+
+        #slider_img2 {
+            text-align: center;
+        }
+
+        #footer_box {
+            width: 100%;
+            height: 150px;
+            margin: 0 auto;
+        }
+
+        #footer {
+            width: 1300px;
+            height: 150px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        #footer>ul {
+            width: 750px;
+            height: 50px;
+            margin: 0 auto;
+            color: #666;
+            text-align: center;
+        }
+
+        #footer>ul>li {
+            float: left;
+            font-size: 18px;
+            margin: 5px 10px;
+        }
+
+        #footer>ul>li>a {
+            text-decoration: none;
+            color: black;
+        }
+
+        #footer>p {
+            float: left;
+            width: 750px;
+            height: 50px;
+            margin: 40px 0 0 180px;
+            font-size: 18px;
+            color: #666;
+        }
+    </style>
+
+
+
+    <script src="./js/jquery-3.7.0.min.js"></script>
+
+
+
+
+
 </head>
+
 <body>
+    <!--해더시작-->
+    <header>
+        <div id="top">
+            <div id="login">
+                <ul>
+                    <li><a href="sub.html">차별화상회 소개</a></li>
+                    <li>|</li>
+                    <li><a href="sub.html">차별화장부 소개</a></li>
+                    <li>|</li>
+                    <li><a href="sub.html">배송안내</a></li>
+                    <li>|</li>
+                    <li><a href="sub.html">블로그</a></li>
+                    <li>|</li>
+                    <li><a href="sub.html">공지사항</a></li>
+                    <li>|</li>
+                    <li><a href="sub.html">FAQ</a></li>
+                    <li>|</li>
+                    <li><a href="sub.html">로그인 / 회원가입</a></li>
+                </ul>
+            </div>
+        </div>
+        <!--헤더끝-->
+        <div id="logo_box">
+            <div id="logo">
+                <a href="index.html" target="_self"><img src="img/logo.png" alt="로고"></a>
+            </div>
 
-<header>
-    <div id="logo">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0hUffaLPqEj6iL-B5Xj7xI8Mk9vFeNn1JbA&s" alt="테슬라로고">
+            <!--상단메뉴-->
+            <nav>
+                <ul class="menu">
+                    <li><a href="#">홈</a>
+                    </li>
+                    <li><a href="#">할인상품</a>
+                        <ul class="sub">
+                            <li><a href="#">고기상품</a></li>
+                            <li><a href="#">채소상품</a></li>
+                            <li><a href="#">각종식자재</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#">기획전</a>
+                        <ul class="sub">
+                            <li><a href="#">고기상품</a></li>
+                            <li><a href="#">채소상품</a></li>
+                            <li><a href="#">각종식자재</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#">카테고리</a>
+                        <ul class="sub">
+                            <li><a href="#">고기상품</a></li>
+                            <li><a href="#">채소상품</a></li>
+                            <li><a href="#">각종식자재</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#">배송기간</a>
+                        <ul class="sub">
+                            <li><a href="#">당일배송</a></li>
+                            <li><a href="#">익일배송</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </nav>
+    </header>
+
+    <div id="wrap">
+
+        <!--slider-->
+
+        <div id="slidewrap">
+
+
+            <ul class="slide">
+                <li><img src="img/slider_1.png" alt="슬라이더 이미지1"></li>
+                <li><img src="img/slider_2.png" alt="슬라이더 이미지2"></li>
+                <li><img src="img/slider_3.png" alt="슬라이더 이미지3"></li>
+                <li><img src="img/slider_4.png" alt="슬라이더 이미지4"></li>
+            </ul>
+            <span class="prev">&lt;</span>
+            <span class="next">&gt;</span>
+        </div>
     </div>
-    <nav>
-    <ul>
-        <li><a href="#">HOME</a></li>
-        <li><a href="#">PRICE</a></li>
-        <li><a href="#">OHDER</a></li>
-        <li><a href="#">A/S CENTER</a></li>
-        <li><a href="#">CUSTMER CENTER</a></li>
-    </ul>
-    </nav>
-</header>
-
-<div id="slider">
-    <img src="https://cdn.hankyung.com/photo/202401/01.35522681.1.jpg" alt="테슬라슬라이더이미지">
-</div>
-
-<section>
-    <article>
-    <h3>NEWS</h3>
-    <img src="https://cdn.autobuff.co.kr/news/photo/202408/53701_18107_3236.jpg" alt="">
-    <h4>Discovery 5</h4>
-    <p>랜드로버가 만든 정통 SUV, 디스커버리의 신형 모델이 다음 달 공개된다.
-    </p>
-    </article>
 
 
-
-    <article>
-    <h3>랜드로버 모델 살펴보기</h3>
-    <img src="https://image.zdnet.co.kr/2022/08/23/b2d2429c37c56dd041262741bb781ace.jpg" alt="" class="img2">
-
-    </article>
-
-
-
-    <article>
-    <h3>고객지원</h3>
-    <div class="iconbox">
-        <img src="https://cdn3.iconfinder.com/data/icons/feather-5/24/search-64.png" alt="">
-        <span>시승신청</span>
+    <!--서브메뉴시작-->
+    <h3>👨🏻‍🍳 같은 업종 사장님들이 자주 사는 상품은?</h3><br>
+    <div id="sub_menu">
+        <ul>
+            <li>
+                <a href="sub.html"><img src="img/menu_1.png" alt="한식">
+                    한식</a>
+            </li>
+            <li>
+                <a href="sub.html"><img src="img/menu_2.png" alt="서양">
+                    서양식</a>
+            </li>
+            <li>
+                <a href="sub.html"><img src="img/menu_3.png" alt="중식">
+                    중식</a>
+            </li>
+            <li>
+                <a href="sub.html"><img src="img/menu_4.png" alt="일식">
+                    일식</a>
+            </li>
+            <li>
+                <a href="sub.html"><img src="img/menu_5.png" alt="패스트푸드">
+                    패스트푸드</a>
+            </li>
+            <li>
+                <a href="sub.html"><img src="img/menu_6.png" alt="아시안">
+                    아시안</a>
+            </li>
+            <li>
+                <a href="sub.html"><img src="img/menu_7.png" alt="셀러드">
+                    샐러드</a>
+            </li>
+            <li>
+                <a href="sub.html"><img src="img/menu_8.png" alt="베이커리">
+                    베이커리</a>
+            </li>
+            <li>
+                <a href="sub.html"><img src="img/menu_9.png" alt="주점">
+                    주점</a>
+            </li>
+            <li>
+                <a href="sub.html"><img src="img/menu_10.png" alt="급식">
+                    뷔페 / 급식</a>
+            </li>
+        </ul>
     </div>
 
-    <div class="iconbox">
-        <img src="https://cdn3.iconfinder.com/data/icons/feather-5/24/map-pin-64.png" alt="">
-        <span>뉴스레터 신청</span>
-    </div>
+    <main>
 
-    <div class="iconbox">
-        <img src="https://cdn3.iconfinder.com/data/icons/feather-5/24/mail-64.png" alt="">
-        <span>전시장 찾기</span>
-    </div>
-    </article>
+        <h3 id="title"></h3>
+
+        <section>
+
+            <article>
+                <div class="box"></div>
+
+                <div class="box"></div>
+
+                <div class="box"></div>
+
+                <div class="box"></div>
+
+                <div class="box"></div>
+
+                <div class="box"></div>
+
+                <div class="box"></div>
+
+                <div class="box"></div>
+
+            </article>
+
+        </section>
 
 
-</section>
+    </main>
+    <hr>
+    <hr>
+    <!--footer 시작-->
+    <footer>
+        <div id="footer_box">
+            <div id="footer">
+                <ul>
+                    <li><a href="sub.html">이메일 무단 수집거부</a></li>
+                    <li>|</li>
+                    <li><a href="sub.html">이용약관</a></li>
+                    <li>|</li>
+                    <li><a href="sub.html">개인정보처리방침</a></li>
+                </ul>
+                <br>
+                <ul>
+                    <li><a href="sub.html">스마트푸트네트윅스</a></li>
+                    <li>|</li>
+                    <li><a href="sub.html">패밀리사이트</a></li>
+                    <li>|</li>
+                    <li><a href="sub.html">사업자정보</a></li>
+                    <li>|</li>
+                    <li><a href="sub.html">고객센터</a></li><br><br><br>
+                    <li><a href="sub.html">토스페이먼츠 구매안전(에스크로) 서비스를 이용할 수 있습니다.
+                            <br>
+                            ©2020. Smart Food Networks Corp.</a>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <!--footer 끝-->
+
+    <script>
 
 
-</section>
 
-<footer>
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0hUffaLPqEj6iL-B5Xj7xI8Mk9vFeNn1JbA&s" alt="로고">
-    <p>테슬라코리아 유한회사 | 사업자등록번호 : 524-88-00237 | 데이비드존파인스타인, 케네스어니스트무어 | 통신판매업신고: 제2016-서울강남-02964호 | 사업자정보확인 | 호스팅제공자: Tesla Inc. | 주소 : 서울특별시 강남구 테헤란로 134, 14층 | 대표전화 : 080-617-1388 | southkorea@tesla.com</p>
-</footer>
+        // menu
+
+        // menu
+
+        $('.menu > li').mouseover(function () {
+
+            $('.sub').stop().slideDown();
+
+        }).mouseout(function () {
+
+            $('.sub').stop().slideUp();
+
+        });
+
+
+
+
+
+
+
+        //slider
+
+        function prev() {
+
+            $('.slide li:last').prependTo('.slide');
+
+            $('.slide').css('margin-left', -1000);    // $('.slide').css({marginLeft:-1000}); 
+
+            $('.slide').stop().animate({ marginLeft: 0 }, 800);
+
+        }
+
+
+
+        function next() {
+
+            $('.slide').stop().animate({ marginLeft: -1000 }, function () {
+
+                $('.slide li:first').appendTo('.slide');
+
+                $('.slide').css({ marginLeft: 0 });
+
+            });
+
+        }
+
+
+
+        function slide() {
+
+            $('.slide').stop().animate({ marginLeft: -1000 }, function () {
+
+                $('.slide li:first').appendTo('.slide');
+
+                $('.slide').css({ marginLeft: 0 });
+
+            });
+
+        }
+
+
+
+
+        $('.prev').click(function () {
+            prev();
+        });
+        $('.next').click(function () {
+            next();
+        });
+
+        setInterval(slide, 3000);
+
+        //json메뉴//
+        window.onload = function () {
+            // 전체 폰트,배경색깔
+            document.body.style.fontFamily = "Charcoal,sans-serif";
+
+
+
+
+
+            // title
+            var title = document.getElementById("title")
+            title.innerHTML = "HIT OF HITS";
+            title.style.color = "purple";
+            title.style.fontSize = "30px";
+            title.style.width = "100%";
+            title.style.textAlign = "center";
+            title.style.letterSpacing = "10px";
+            title.style.fontFamily = "Impact";
+            title.margin = "0";
+
+
+
+            // sub title
+
+            var subtitle = document.createElement("p");
+            var textnode = document.createTextNode(" 히트식자제 인기 상품");
+            subtitle.appendChild(textnode);
+            title.appendChild(subtitle);
+            subtitle.style.color = "#666";
+            subtitle.style.fontSize = "13px";
+            subtitle.style.margin = "0";
+
+
+
+
+            //article
+
+            var article = document.getElementsByTagName("article")[0];
+            article.style.width = "1200px";
+            article.style.height = "900px";
+            article.style.textAlign = "center";
+            article.style.border = "solid 1px #999";
+            article.style.margin = "0 auto";
+
+
+
+
+
+
+
+            //box
+
+            var boxs = document.getElementsByClassName('box');
+
+
+            for (var i = 0; i < boxs.length; i++) {
+
+                boxs[i].boxSizing = "border-box";
+                boxs[i].style.width = "270px";
+                boxs[i].style.height = "380px";
+                boxs[i].style.border = "solid 1px #ddd";
+                boxs[i].style.backgroundColor = "#fff";
+                boxs[i].style.margin = "20px 10px";
+                boxs[i].style.display = "inline-block";
+                boxs[i].style.boxShadow = "4px 4px 4px #ddd";
+
+            }
+
+        }
+
+        $(function () {
+
+            $.ajax({
+
+                url: "./json/hit2.json",
+
+                dataType: "json",
+
+                success: function (data) {
+
+                    if (data.length > 0) {
+
+
+
+                        for (var i in data) {
+                            var title = data[i].title;
+                            var subtitle2 = data[i].subtitle;
+                            var price = data[i].price;
+                            var url = data[i].url;
+
+                            $(".box").eq(i).append('<div><a href="#">' + "<img src='img/" + data[i].url + "'/>" + '</a></div>');
+
+
+
+
+
+                            $(".box").eq(i).append('<h5><a href="#">' + data[i].title + "</a><h5>");
+
+                            $(".box").eq(i).append('<p><a href="#">' + data[i].subtitle + "</a></p>");
+
+                            $(".box").eq(i).append("<span>" + data[i].price + "</span>");
+
+
+
+
+                            //review random count
+
+                            var count = Math.floor(Math.random() * 100);
+                            $(".box").eq(i).append("<button>" + count + " REVIEWS" + "</button>");
+
+
+
+
+                            // img
+
+                            $(".box > div").attr("width", "270");
+                            $(".box > div").attr("height", "270");
+
+                            $(".box > div").css("overflow", "hidden");
+
+
+
+                            $(".box > div > a > img").attr("width", "270");
+                            $(".box > div > a > img").attr("height", "270");
+                            $(".box > div > a > img").attr("alt", "상품사진");
+
+
+
+
+
+                            $(".box > div > a > img").hover(function () {
+                                $(this).attr("width", "270").attr("height", "270").css({ "opacity": "0.6", "display": "inline" });
+                            },
+                                function () {
+                                    $(this).attr("width", "270").attr("height", "270").css({ "opacity": "1", "display": "inline" });
+                                });
+
+
+
+
+
+
+                            $(".box>h5>a").css({ "font-size": "12px", "height": "20px", "margin": "0px", "marginRight": "15px", "marginLeft": "15px", "color": "#000", "text-align": "left", "text-decoration": "none", "display": "block" });
+
+
+                            $(".box>p>a").css({ "border-bottom": "1px solid #eee", "marginRight": "15px", "marginLeft": "15px", "font-size": "12px", "color": "#666", "line-height": "45px", "text-align": "left", "text-decoration": "none", "display": "block" });
+
+                            $(".box>span").css({ "font-size": "11px", "marginLeft": "15px", "marginRight": "15px", "float": "left" });
+                            $(".box>button").css({ "font-size": "11px", "border-radius": " 3px", "border": "none", "background": "#ba7112", "padding": "5px", "color": "#fff", "marginRight": "15px", "float": "right", "cursor": "pointer" });
+
+
+
+
+                        }
+
+                    }
+
+                }
+
+            });
+
+
+        });
+
+    </script>
+
+
 
 </body>
+
 </html>
-
-
